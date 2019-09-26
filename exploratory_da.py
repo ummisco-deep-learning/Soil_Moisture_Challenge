@@ -8,8 +8,10 @@ Created on Sat Sep 14 06:30:21 2019
 
 import pandas as pd
 import matplotlib.pyplot as plt
+import os
 
-train = pd.read_csv("Train.csv")
+dir = os.path.dirname(os.path.abspath(__file__))
+train = pd.read_csv(os.path.join(dir,"data\\Train.csv"))
 columns = train.keys()
 
 print(columns)
@@ -33,7 +35,7 @@ na_4 = train["Soil humidity 4"].isna().sum()
 time_points_1 = length - na_1
 time_points_2 = length - na_2
 time_points_3 = length - na_3
-time_points_4 = length - na_4 
+time_points_4 = length - na_4
 
 time_points_str = "There are {} valid time points for the slot {}"
 
@@ -58,5 +60,3 @@ print(days_str.format(2, days_2))
 print(days_str.format(3, days_3))
 print(days_str.format(4, days_4))
 print("             ----------------             ")
-
-
